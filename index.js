@@ -1,63 +1,44 @@
-// az előző commitot szerintem nem úgy kellet volna ahogy csináltam de remélem elfogadható
-// észrevettem hogy a html kódban a divet nem kellet volna lemásolnom, hoppá
-//változók bevezetése
 /**
  * @type {string} valtozo ami tartalmazza a cimet
  */
 const title = 'irodalom szereplok'; // cím tárolása egy vátozóban
 /**
- * @type {string} valtozo ami tartalmazza a fejléc 1. elemét
+ * @type {title: string} objektum ami tartalmazza a fejléc 1. elemét
  */
-const tableheaderElso = 'Szerző'; // fejléc 1. elemének tárolása egy vátozóban
+const tableheaderElso = { title: 'Szerző' }; // fejléc 1. elemének tárolása egy objektumban
 /**
- * @type {string} valtozo ami tartalmazza a fejléc 2. elmét
+ * @type {title: string} objektum ami tartalmazza a fejléc 1. elemét
  */
-const tableheaderMasodik = 'Mű'; // fejléc 2. elemének tárolása egy vátozóban
+const tableheaderMasodik = { title: 'Mű' }; // fejléc 2. elemének tárolása egy objektumban
 /**
- * @type {string} valtozo ami tartalmazza a fejléc 3. elemét
+ * @type {title: string} objektum ami tartalmazza a fejléc 2. elemét
  */
-const tableheaderHarmadik = 'Szereplők'; // fejléc 3. elemének tárolása egy vátozóban
+const tableheaderHarmadik = { title: 'Szereplők' }; // fejléc 2. elemének tárolása egy objektumban
 /**
- * @type {string} 1. sor 1. eleme
- */
-const elsoSorElso = 'Katona József'; // 1. sor 1. elemének tárolása egy vátozóban
+ * @type {szerzo: string, mu: string, elsoSzereplo: string} // 1. sor objektum
+ */
+const elsoSorObj = { // 1. sor objektum létrehozása
+    szerzo: 'Katona József', // szerző megadása
+    mu: 'Bánk Bán', // mű megadása
+    elsoSzereplo: 'Gertrúdisz Királyné' // szereplő megadása
+};
 /**
- * @type {string} 1. sor 2. eleme
- */
-const elsoSorMasodik = 'Bánk Bán'; // 1. sor 2. elemének tárolása egy vátozóban
+ * @type {szerzo: string, mu: string, elsoSzereplo: string, masodikSzereplo: string} // 2. sor objektum
+ */
+const masodikSorObj = { // 2. sor objektum létrehozása
+    szerzo: 'Mikszáth Kálmán', // szerző megadása
+    mu: 'Beszterce ostroma', // mű megadása
+    elsoSzereplo: 'Pongrác István gróf', // első szereplő megadása
+    masodikSzereplo: 'Estella' // második szereplő megadása
+};
 /**
- * @type {string} 1. sor 3. eleme
- */
-const elsoSorHarmadik = 'Gertrúdisz Királyné'; // 1. sor 3. elemének tárolása egy vátozóban
-/**
- * @type {string} 2. sor 1. eleme
- */
-const masodikSorElso = 'Mikszáth Kálmán'; // 2. sor 1. elemének tárolása egy vátozóban
-/**
- * @type {string} 2. sor 2. eleme
- */
-const masodikSorMasodik = 'Beszterce ostroma'; // 2. sor 2. elemének tárolása egy vátozóban
-/**
- * @type {string} 2. sor 3. eleme
- */
-const masodikSorHarmadik = 'Pongrác István gróf'; // 2. sor 3. elemének tárolása egy vátozóban
-/**
- * @type {string} 2. sor 4. eleme
- */
-const masodikSorNegyedik = 'Estella'; // 2. sor 4. elemének tárolása egy vátozóban
-/**
- * @type {string} 3. sor 1. eleme
- */
-const harmadikSorElso = 'Arany János'; // 3. sor 1. elemének tárolása egy vátozóban
-/**
- * @type {string} 3. sor 2. eleme
- */
-const harmadikSorMasodik = 'Toldi'; // 3. sor 2. elemének tárolása egy vátozóban
-/**
- * @type {string} 3. sor 3. eleme
- */
-const harmadikSorHarmadik = 'Toldi Miklós'; // 3. sor 3. elemének tárolása egy vátozóban
-
+ * @type {szerzo: string, mu: string, elsoSzereplo: string} // 3. sor objektum
+ */
+const harmadikSorObj = { // 3. sor objektum létrehozása
+    szerzo: 'Arany János', // szerző megadása
+    mu: 'Toldi', // mű megadása
+    elsoSzereplo: 'Toldi Miklós' // szereplő megadása
+};
 
 
 //táblázat
@@ -178,19 +159,19 @@ document.body.appendChild(table); // kész táblázat hozzáfűzése a body-hoz
 
 // szövegértékek megadása
 // fejléc
-fejlecElsoCella.innerText = tableheaderElso; // fejléc 1. cellájának szövegértékének megadása
-fejlecMasodikCella.innerText = tableheaderMasodik; // fejléc 2. cellájának szövegértékének megadása
-fejlecHarmadikCella.innerText = tableheaderHarmadik; // fejléc 3. cellájának szövegértékének megadása
+fejlecElsoCella.innerText = tableheaderElso.title; // fejléc 1. cellájának szövegértékének megadása
+fejlecMasodikCella.innerText = tableheaderMasodik.title; // fejléc 2. cellájának szövegértékének megadása
+fejlecHarmadikCella.innerText = tableheaderHarmadik.title; // fejléc 3. cellájának szövegértékének megadása
 // 1. sor
-elsoSorElsoCella.innerText = elsoSorElso; // 1. sor 1. cellájának szövegértékének megadása
-elsoSorMasodikCella.innerText = elsoSorMasodik; // 1. sor 2. cellájának szövegértékének megadása
-elsoSorHarmadikCella.innerText = elsoSorHarmadik; // 1. sor 2. cellájának szövegértékének megadása
+elsoSorElsoCella.innerText = elsoSorObj.szerzo; // 1. sor 1. cellájának szövegértékének megadása
+elsoSorMasodikCella.innerText = elsoSorObj.mu; // 1. sor 2. cellájának szövegértékének megadása
+elsoSorHarmadikCella.innerText = elsoSorObj.elsoSzereplo; // 1. sor 3. cellájának szövegértékének megadása
 // 2. sor
-masodikSorElsoCella.innerText = masodikSorElso; // 2. sor 1. cellájának szövegértékének megadása
-masodikSorMasodikCella.innerText = masodikSorMasodik; // 2. sor 2. cellájának szövegértékének megadása
-masodikSorHarmadikCella.innerText = masodikSorHarmadik; // 2. sor 3. cellájának szövegértékének megadása
-masodikSorNegyedikCella.innerText = masodikSorNegyedik; // 2. sor 4. cellájának szövegértékének megadása
+masodikSorElsoCella.innerText = masodikSorObj.szerzo; // 2. sor 1. cellájának szövegértékének megadása
+masodikSorMasodikCella.innerText = masodikSorObj.mu; // 2. sor 2. cellájának szövegértékének megadása
+masodikSorHarmadikCella.innerText = masodikSorObj.elsoSzereplo; // 2. sor 3. cellájának szövegértékének megadása
+masodikSorNegyedikCella.innerText = masodikSorObj.masodikSzereplo; // 2. sor 4. cellájának szövegértékének megadása
 //3. sor
-harmadikSorElsoCella.innerText = harmadikSorElso; // 3. sor 1. cellájának szövegértékének megadása
-harmadikSorMasodikCella.innerText = harmadikSorMasodik; // 3. sor 2. cellájának szövegértékének megadása
-harmadikSorHarmadikCella.innerText = harmadikSorHarmadik; // 3. sor 3. cellájának szövegértékének megadása
+harmadikSorElsoCella.innerText = harmadikSorObj.szerzo; // 3. sor 1. cellájának szövegértékének megadása
+harmadikSorMasodikCella.innerText = harmadikSorObj.mu; // 3. sor 2. cellájának szövegértékének megadása
+harmadikSorHarmadikCella.innerText = harmadikSorObj.elsoSzereplo; // 3. sor 3. cellájának szövegértékének megadása
