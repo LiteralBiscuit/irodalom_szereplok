@@ -1,14 +1,16 @@
+// rájöttem hogy a 'fejléc' szót több dologra is érttettem eddig, innentől inkább nem használom
+// ezért nem szabad magyarul programoznom mert abból elcseszett hunglish lessz
 /**
  * @type {string} valtozo ami tartalmazza a weblap címét
  */
 const title = 'irodalom szereplok'; // cím tárolása egy vátozóban
 /**
- * @type {{title: string}[]} fejléc objektum array
+ * @type {{title: string}[]} fej sor objektum array
  */
-const tableheaderArray = [ // fejléc objektum array létrehozása
-    { title: 'Szerző' }, // fejléc 1. elemének tárolása egy objektumban
-    { title: 'Mű' }, // fejléc 2. elemének tárolása egy objektumban
-    { title: 'Szereplők' } // fejléc 3. elemének tárolása egy objektumban
+const tableheaderArray = [ // fej sor objektum array létrehozása
+    { title: 'Szerző' }, // fej sor 1. elemének tárolása egy objektumban
+    { title: 'Mű' }, // fej sor 2. elemének tárolása egy objektumban
+    { title: 'Szereplők' } // fej sor 3. elemének tárolása egy objektumban
 ]
 /**
  * @type {{ szerzo: string, mu: string, elsoSzereplo: string, masodikSzereplo?: string}[]}
@@ -32,137 +34,69 @@ const tableBodyArray = [ // táblázat törzs array létrehozása
     }
 ]
 
+
 //táblázat
 //táblázatelemek létrehozása
 /**
  * @type {HTMLTableElement} a táblázat
  */
 const table = document.createElement("table"); // a táblázat létrehozása és tárolása egy vátozóban
+document.body.appendChild(table); // táblázat hozzáfűzése a body-hoz
 /**
- * @type {HTMLTableSectionElement} a fejléc
+ * @type {HTMLTableSectionElement} a fej
  */
-const thead = document.createElement("thead"); // a fejléc létrehozása és tárolása egy vátozóban
+const thead = document.createElement("thead"); // a fej létrehozása és tárolása egy vátozóban
+table.append(thead); // fej hozzáfűzése a táblázathoz
 /**
  * @type {HTMLTableSectionElement} a táblázat törzse
  */
 const tbody = document.createElement("tbody"); // a táblázat törzsének létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableRowElement} a fejléc tr-je
- */
-const fejlec = document.createElement("tr"); // a fejléc tr-jének létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableRowElement} 1. sor
- */
-const elsoSor = document.createElement("tr"); // 1. sor létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableRowElement} 2.sor
- */
-const masodikSor = document.createElement("tr"); // 2 sor létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableRowElement} 3. sor
- */
-const harmadikSor = document.createElement("tr"); // 3. sor létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 1. header
- */
-const fejlecElsoCella = document.createElement("th"); // 1. header létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 2. header
- */
-const fejlecMasodikCella = document.createElement("th"); // 2. header létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 3. header
- */
-const fejlecHarmadikCella = document.createElement("th"); // 3. header létrehozása és tárolása egy vátozóban
-fejlecHarmadikCella.colSpan = 2; // 3. header colspan tulajdonságának a módosítása 2-re
-/**
- * @type {HTMLTableCellElement} 1. sor 1. cellája
- */
-const elsoSorElsoCella = document.createElement("td"); // 1. sor 1. cellájának létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 1. sor 2. cellája
- */
-const elsoSorMasodikCella = document.createElement("td"); // 1. sor 2. cellájának létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 1. sor 3. cellája
- */
-const elsoSorHarmadikCella = document.createElement("td"); // 1. sor 3. cellájának létrehozása és tárolása egy vátozóban
-elsoSorHarmadikCella.colSpan = 2; // 1. sor 3. cellájának a colspan tulajdonságának a módosítása 2-re
-/**
- * @type {HTMLTableCellElement} 2. sor 1. cellája
- */
-const masodikSorElsoCella = document.createElement("td"); // 2. sor 1. cellájának létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 2. sor 2. cellája
- */
-const masodikSorMasodikCella = document.createElement("td"); // 2. sor 2. cellájának létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 2. sor 3. cellája
- */
-const masodikSorHarmadikCella = document.createElement("td"); // 2. sor 2. cellájának létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 2. sor 4. cellája
- */
-const masodikSorNegyedikCella = document.createElement("td"); // 2. sor 4. cellájának létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 3. sor 1. cellája
- */
-const harmadikSorElsoCella = document.createElement("td"); // 3. sor 1. cellájának létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 3. sor 2. cellája
- */
-const harmadikSorMasodikCella = document.createElement("td"); // 3. sor 2. cellájának létrehozása és tárolása egy vátozóban
-/**
- * @type {HTMLTableCellElement} 3. sor 3. cellája
- */
-const harmadikSorHarmadikCella = document.createElement("td"); // 1. sor 1. cellájának létrehozása és tárolása egy vátozóban
-harmadikSorHarmadikCella.colSpan = 2; // 3. sor 3. cellájának a colspan tulajdonságának a módosítása 2-re
+table.appendChild(tbody); // törzs hozzáfűzése a táblázathoz
 
-// táblázatelemek összefűzése
-// fő elemek
-table.appendChild(thead); // thead hozzáfűzése a táblázathoz
-table.appendChild(tbody); // tbody hozzáfűzése a táblázathoz
-// sorok
-thead.appendChild(fejlec); // fejléc hozzáfűzése a thead-hez
-tbody.appendChild(elsoSor); // 1. sor hozzáfűzése a tbody-hoz
-tbody.appendChild(masodikSor); // 2. sor hozzáfűzése a tbody-hoz
-tbody.appendChild(harmadikSor); // 3. sor hozzáfűzése a tbody-hoz
-// cellák
-// thead
-fejlec.appendChild(fejlecElsoCella); // fejléc 1. cállájának hozzáfűzése a fejléchez
-fejlec.appendChild(fejlecMasodikCella); // fejléc 2. cállájának hozzáfűzése a fejléchez
-fejlec.appendChild(fejlecHarmadikCella); // fejléc 3. cállájának hozzáfűzése a fejléchez
-// 1. sor
-elsoSor.appendChild(elsoSorElsoCella); // 1. sor 1. cellájának hozzáfűzése az 1. sorhoz
-elsoSor.appendChild(elsoSorMasodikCella); // 1. sor 2. cellájának hozzáfűzése az 1. sorhoz
-elsoSor.appendChild(elsoSorHarmadikCella); // 1. sor 2. cellájának hozzáfűzése az 1. sorhoz
-// 2. sor
-masodikSor.appendChild(masodikSorElsoCella); // 2. sor 1. cellájának hozzáfűzése az 2. sorhoz
-masodikSor.appendChild(masodikSorMasodikCella); // 2. sor 2. cellájának hozzáfűzése az 2. sorhoz
-masodikSor.appendChild(masodikSorHarmadikCella); // 2. sor 3. cellájának hozzáfűzése az 2. sorhoz
-masodikSor.appendChild(masodikSorNegyedikCella); // 2. sor 4. cellájának hozzáfűzése az 2. sorhoz
-// 3. sor
-harmadikSor.appendChild(harmadikSorElsoCella); // 3. sor 1. cellájának hozzáfűzése az 3. sorhoz
-harmadikSor.appendChild(harmadikSorMasodikCella); // 3. sor 2. cellájának hozzáfűzése az 3. sorhoz
-harmadikSor.appendChild(harmadikSorHarmadikCella); // 3. sor 3. cellájának hozzáfűzése az 3. sorhoz
-// táblázat
-document.body.appendChild(table); // kész táblázat hozzáfűzése a body-hoz
+// fej sor létrehozása
+/**
+ * @type {HTMLTableRowElement} a fej sor
+ */
+const tableHeaderRow = document.createElement("tr"); // fej sor létrehozása
+for (const header of tableheaderArray) { // for loop fej sor tartalmának a létrehozásához
+    /**
+     * @type {HTMLTableCellElement} th
+     */
+    const tableHeaderCell = document.createElement("th"); // adott th létrehozása
+    tableHeaderCell.innerText = header.title; // adott th szövegének megadása
+    tableHeaderRow.appendChild(tableHeaderCell); // th hozzáfűzése a fej sorhoz
+}
+thead.appendChild(tableHeaderRow); // fej sor hozzáfűzése a fejhez
 
-// szövegértékek megadása
-// fejléc
-fejlecElsoCella.innerText = tableheaderArray[0].title; // fejléc 1. cellájának szövegértékének megadása
-fejlecMasodikCella.innerText = tableheaderArray[1].title; // fejléc 2. cellájának szövegértékének megadása
-fejlecHarmadikCella.innerText = tableheaderArray[2].title; // fejléc 3. cellájának szövegértékének megadása
-// 1. sor
-elsoSorElsoCella.innerText = tableBodyArray[0].szerzo; // 1. sor 1. cellájának szövegértékének megadása
-elsoSorMasodikCella.innerText = tableBodyArray[0].mu; // 1. sor 2. cellájának szövegértékének megadása
-elsoSorHarmadikCella.innerText = tableBodyArray[0].elsoSzereplo; // 1. sor 3. cellájának szövegértékének megadása
-// 2. sor
-masodikSorElsoCella.innerText = tableBodyArray[1].szerzo; // 2. sor 1. cellájának szövegértékének megadása
-masodikSorMasodikCella.innerText = tableBodyArray[1].mu; // 2. sor 2. cellájának szövegértékének megadása
-masodikSorHarmadikCella.innerText = tableBodyArray[1].elsoSzereplo; // 2. sor 3. cellájának szövegértékének megadása
-masodikSorNegyedikCella.innerText = tableBodyArray[1].masodikSzereplo; // 2. sor 4. cellájának szövegértékének megadása
-//3. sor
-harmadikSorElsoCella.innerText = tableBodyArray[2].szerzo; // 3. sor 1. cellájának szövegértékének megadása
-harmadikSorMasodikCella.innerText = tableBodyArray[2].mu; // 3. sor 2. cellájának szövegértékének megadása
-harmadikSorHarmadikCella.innerText = tableBodyArray[2].elsoSzereplo; // 3. sor 3. cellájának szövegértékének megadása
+// törzs tartalom
+for (const sor of tableBodyArray) { // for loop a tartalom léterehozásához
+    /**
+     * @type {HTMLTableRowElement} sor
+     */
+    const tbodyRow = document.createElement("tr"); // adott sor létrehozása
+    tbody.appendChild(tbodyRow); // adott sor hozzáfűzése a tbody-hoz
+    /**
+     * @type {HTMLTableCellElement} 1. cella
+     */
+    const elsoTbodyCell = document.createElement("td"); // 1. cella létrehozása
+    tbodyRow.appendChild(elsoTbodyCell); // 1. clella hozzáfűzése az adott sorhoz
+    elsoTbodyCell.innerText = sor.szerzo; // 1. cella szövegének megadása
+    /**
+     * @type {HTMLTableCellElement} 2. cella
+     */
+    const masodikTbodyCell = document.createElement("td"); // 2. cella létrehozása
+    tbodyRow.appendChild(masodikTbodyCell); // 2. clella hozzáfűzése az adott sorhoz
+    masodikTbodyCell.innerText = sor.mu; // 2. cella szövegének megadása
+    /**
+     * @type {HTMLTableCellElement} 3. cella
+     */
+    const harmadikTbodyCell = document.createElement("td"); // 3. cella létrehozása
+    tbodyRow.appendChild(harmadikTbodyCell); // 3. clella hozzáfűzése az adott sorhoz
+    harmadikTbodyCell.innerText = sor.elsoSzereplo; // 3. cella szövegének megadása
+    /**
+     * @type {HTMLTableCellElement} 3. cella
+     */
+    const negyedikTbodyCell = document.createElement("td"); // 4. cella létrehozása
+    tbodyRow.appendChild(negyedikTbodyCell); // 4. clella hozzáfűzése az adott sorhoz
+    negyedikTbodyCell.innerText = sor.masodikSzereplo; // 4. cella szövegének megadása
+}
