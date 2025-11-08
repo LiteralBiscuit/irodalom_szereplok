@@ -58,13 +58,20 @@ table.appendChild(tbody); // törzs hozzáfűzése a táblázathoz
  * @type {HTMLTableRowElement} a fej sor
  */
 const tableHeaderRow = document.createElement("tr"); // fej sor létrehozása
+/**
+ * @type {number} index változó
+ */
+let index = 0; // index változó létrehozása hogy a harmadik elemet meg lehessen határozni
 for (const header of tableheaderArray) { // for loop fej sor tartalmának a létrehozásához
+    index++; // index növelése
     /**
      * @type {HTMLTableCellElement} th
      */
     const tableHeaderCell = document.createElement("th"); // adott th létrehozása
     tableHeaderCell.innerText = header.title; // adott th szövegének megadása
     tableHeaderRow.appendChild(tableHeaderCell); // th hozzáfűzése a fej sorhoz
+    if(index == 3) // csak így jutott eszembe megoldani
+        tableHeaderCell.colSpan = 2; // 3. th colspan tulajdonságának beállítása 2-re
 }
 thead.appendChild(tableHeaderRow); // fej sor hozzáfűzése a fejhez
 
@@ -93,10 +100,14 @@ for (const sor of tableBodyArray) { // for loop a tartalom léterehozásához
     const harmadikTbodyCell = document.createElement("td"); // 3. cella létrehozása
     tbodyRow.appendChild(harmadikTbodyCell); // 3. clella hozzáfűzése az adott sorhoz
     harmadikTbodyCell.innerText = sor.elsoSzereplo; // 3. cella szövegének megadása
-    /**
-     * @type {HTMLTableCellElement} 3. cella
-     */
-    const negyedikTbodyCell = document.createElement("td"); // 4. cella létrehozása
-    tbodyRow.appendChild(negyedikTbodyCell); // 4. clella hozzáfűzése az adott sorhoz
-    negyedikTbodyCell.innerText = sor.masodikSzereplo; // 4. cella szövegének megadása
+    if (sor.masodikSzereplo){ // ha van 4. sor
+        /**
+         * @type {HTMLTableCellElement} 4. cella
+         */
+        const negyedikTbodyCell = document.createElement("td"); // 4. cella létrehozása
+        tbodyRow.appendChild(negyedikTbodyCell); // 4. clella hozzáfűzése az adott sorhoz
+        negyedikTbodyCell.innerText = sor.masodikSzereplo; // 4. cella szövegének megadása
+        continue; // ha van 4. cella akkor nem állítunk colspant hanem visszaugrunk a ciklus elejére
+    }
+    harmadikTbodyCell.colSpan = 2; // 3. cella colspan beállítása 2-re ha nincs 4. sor
 }
