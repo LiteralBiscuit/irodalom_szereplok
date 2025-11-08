@@ -10,33 +10,27 @@ const tableheaderArray = [ // fejléc objektum array létrehozása
     { title: 'Mű' }, // fejléc 2. elemének tárolása egy objektumban
     { title: 'Szereplők' } // fejléc 3. elemének tárolása egy objektumban
 ]
-
 /**
- * @type {szerzo: string, mu: string, elsoSzereplo: string} 1. sor objektum
+ * @type {{ szerzo: string, mu: string, elsoSzereplo: string, masodikSzereplo?: string}[]}
  */
-const elsoSorObj = { // 1. sor objektum létrehozása
+const tableBodyArray = [ // táblázat törzs array létrehozása
+    { // 1. sor objektum létrehozása
     szerzo: 'Katona József', // szerző megadása
     mu: 'Bánk Bán', // mű megadása
     elsoSzereplo: 'Gertrúdisz Királyné' // szereplő megadása
-};
-/**
- * @type {szerzo: string, mu: string, elsoSzereplo: string, masodikSzereplo: string} 2. sor objektum
- */
-const masodikSorObj = { // 2. sor objektum létrehozása
+    },
+    { // 2. sor objektum létrehozása
     szerzo: 'Mikszáth Kálmán', // szerző megadása
     mu: 'Beszterce ostroma', // mű megadása
     elsoSzereplo: 'Pongrác István gróf', // első szereplő megadása
     masodikSzereplo: 'Estella' // második szereplő megadása
-};
-/**
- * @type {szerzo: string, mu: string, elsoSzereplo: string} 3. sor objektum
- */
-const harmadikSorObj = { // 3. sor objektum létrehozása
+    },
+    { // 3. sor objektum létrehozása
     szerzo: 'Arany János', // szerző megadása
     mu: 'Toldi', // mű megadása
     elsoSzereplo: 'Toldi Miklós' // szereplő megadása
-};
-
+    }
+]
 
 //táblázat
 //táblázatelemek létrehozása
@@ -160,15 +154,15 @@ fejlecElsoCella.innerText = tableheaderArray[0].title; // fejléc 1. cellájána
 fejlecMasodikCella.innerText = tableheaderArray[1].title; // fejléc 2. cellájának szövegértékének megadása
 fejlecHarmadikCella.innerText = tableheaderArray[2].title; // fejléc 3. cellájának szövegértékének megadása
 // 1. sor
-elsoSorElsoCella.innerText = elsoSorObj.szerzo; // 1. sor 1. cellájának szövegértékének megadása
-elsoSorMasodikCella.innerText = elsoSorObj.mu; // 1. sor 2. cellájának szövegértékének megadása
-elsoSorHarmadikCella.innerText = elsoSorObj.elsoSzereplo; // 1. sor 3. cellájának szövegértékének megadása
+elsoSorElsoCella.innerText = tableBodyArray[0].szerzo; // 1. sor 1. cellájának szövegértékének megadása
+elsoSorMasodikCella.innerText = tableBodyArray[0].mu; // 1. sor 2. cellájának szövegértékének megadása
+elsoSorHarmadikCella.innerText = tableBodyArray[0].elsoSzereplo; // 1. sor 3. cellájának szövegértékének megadása
 // 2. sor
-masodikSorElsoCella.innerText = masodikSorObj.szerzo; // 2. sor 1. cellájának szövegértékének megadása
-masodikSorMasodikCella.innerText = masodikSorObj.mu; // 2. sor 2. cellájának szövegértékének megadása
-masodikSorHarmadikCella.innerText = masodikSorObj.elsoSzereplo; // 2. sor 3. cellájának szövegértékének megadása
-masodikSorNegyedikCella.innerText = masodikSorObj.masodikSzereplo; // 2. sor 4. cellájának szövegértékének megadása
+masodikSorElsoCella.innerText = tableBodyArray[1].szerzo; // 2. sor 1. cellájának szövegértékének megadása
+masodikSorMasodikCella.innerText = tableBodyArray[1].mu; // 2. sor 2. cellájának szövegértékének megadása
+masodikSorHarmadikCella.innerText = tableBodyArray[1].elsoSzereplo; // 2. sor 3. cellájának szövegértékének megadása
+masodikSorNegyedikCella.innerText = tableBodyArray[1].masodikSzereplo; // 2. sor 4. cellájának szövegértékének megadása
 //3. sor
-harmadikSorElsoCella.innerText = harmadikSorObj.szerzo; // 3. sor 1. cellájának szövegértékének megadása
-harmadikSorMasodikCella.innerText = harmadikSorObj.mu; // 3. sor 2. cellájának szövegértékének megadása
-harmadikSorHarmadikCella.innerText = harmadikSorObj.elsoSzereplo; // 3. sor 3. cellájának szövegértékének megadása
+harmadikSorElsoCella.innerText = tableBodyArray[2].szerzo; // 3. sor 1. cellájának szövegértékének megadása
+harmadikSorMasodikCella.innerText = tableBodyArray[2].mu; // 3. sor 2. cellájának szövegértékének megadása
+harmadikSorHarmadikCella.innerText = tableBodyArray[2].elsoSzereplo; // 3. sor 3. cellájának szövegértékének megadása
