@@ -1,21 +1,18 @@
 /**
- * @type {string} valtozo ami tartalmazza a cimet
+ * @type {string} valtozo ami tartalmazza a weblap címét
  */
 const title = 'irodalom szereplok'; // cím tárolása egy vátozóban
 /**
- * @type {title: string} objektum ami tartalmazza a fejléc 1. elemét
- */
-const tableheaderElso = { title: 'Szerző' }; // fejléc 1. elemének tárolása egy objektumban
+ * @type {{title: string}[]} fejléc objektum array
+ */
+const tableheaderArray = [ // fejléc objektum array létrehozása
+    { title: 'Szerző' }, // fejléc 1. elemének tárolása egy objektumban
+    { title: 'Mű' }, // fejléc 2. elemének tárolása egy objektumban
+    { title: 'Szereplők' } // fejléc 3. elemének tárolása egy objektumban
+]
+
 /**
- * @type {title: string} objektum ami tartalmazza a fejléc 1. elemét
- */
-const tableheaderMasodik = { title: 'Mű' }; // fejléc 2. elemének tárolása egy objektumban
-/**
- * @type {title: string} objektum ami tartalmazza a fejléc 2. elemét
- */
-const tableheaderHarmadik = { title: 'Szereplők' }; // fejléc 2. elemének tárolása egy objektumban
-/**
- * @type {szerzo: string, mu: string, elsoSzereplo: string} // 1. sor objektum
+ * @type {szerzo: string, mu: string, elsoSzereplo: string} 1. sor objektum
  */
 const elsoSorObj = { // 1. sor objektum létrehozása
     szerzo: 'Katona József', // szerző megadása
@@ -23,7 +20,7 @@ const elsoSorObj = { // 1. sor objektum létrehozása
     elsoSzereplo: 'Gertrúdisz Királyné' // szereplő megadása
 };
 /**
- * @type {szerzo: string, mu: string, elsoSzereplo: string, masodikSzereplo: string} // 2. sor objektum
+ * @type {szerzo: string, mu: string, elsoSzereplo: string, masodikSzereplo: string} 2. sor objektum
  */
 const masodikSorObj = { // 2. sor objektum létrehozása
     szerzo: 'Mikszáth Kálmán', // szerző megadása
@@ -32,7 +29,7 @@ const masodikSorObj = { // 2. sor objektum létrehozása
     masodikSzereplo: 'Estella' // második szereplő megadása
 };
 /**
- * @type {szerzo: string, mu: string, elsoSzereplo: string} // 3. sor objektum
+ * @type {szerzo: string, mu: string, elsoSzereplo: string} 3. sor objektum
  */
 const harmadikSorObj = { // 3. sor objektum létrehozása
     szerzo: 'Arany János', // szerző megadása
@@ -159,9 +156,9 @@ document.body.appendChild(table); // kész táblázat hozzáfűzése a body-hoz
 
 // szövegértékek megadása
 // fejléc
-fejlecElsoCella.innerText = tableheaderElso.title; // fejléc 1. cellájának szövegértékének megadása
-fejlecMasodikCella.innerText = tableheaderMasodik.title; // fejléc 2. cellájának szövegértékének megadása
-fejlecHarmadikCella.innerText = tableheaderHarmadik.title; // fejléc 3. cellájának szövegértékének megadása
+fejlecElsoCella.innerText = tableheaderArray[0].title; // fejléc 1. cellájának szövegértékének megadása
+fejlecMasodikCella.innerText = tableheaderArray[1].title; // fejléc 2. cellájának szövegértékének megadása
+fejlecHarmadikCella.innerText = tableheaderArray[2].title; // fejléc 3. cellájának szövegértékének megadása
 // 1. sor
 elsoSorElsoCella.innerText = elsoSorObj.szerzo; // 1. sor 1. cellájának szövegértékének megadása
 elsoSorMasodikCella.innerText = elsoSorObj.mu; // 1. sor 2. cellájának szövegértékének megadása
