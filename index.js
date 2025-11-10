@@ -5,12 +5,12 @@
  */
 const title = 'irodalom szereplok'; // cím tárolása egy vátozóban
 /**
- * @type {{title: string}[]} fej sor objektum array
+ * @type {{title: string, colspan: number}[]} fej sor objektum array
  */
 const tableheaderArray = [ // fej sor objektum array létrehozása
-    { title: 'Szerző' }, // fej sor 1. elemének tárolása egy objektumban
-    { title: 'Mű' }, // fej sor 2. elemének tárolása egy objektumban
-    { title: 'Szereplők' } // fej sor 3. elemének tárolása egy objektumban
+    { title: 'Szerző', colspan: 1 }, // fej sor 1. elemének tárolása egy objektumban, illetve a colspan-ja
+    { title: 'Mű', colspan: 1 }, // fej sor 2. elemének tárolása egy objektumban, illetve a colspan-ja
+    { title: 'Szereplők', colspan: 2 } // fej sor 3. elemének tárolása egy objektumban, illetve a colspan-ja
 ]
 /**
  * @type {{ szerzo: string, mu: string, elsoSzereplo: string, masodikSzereplo?: string}[]}
@@ -57,16 +57,9 @@ table.appendChild(tbody); // törzs hozzáfűzése a táblázathoz
  * @type {HTMLTableRowElement} a fej sor
  */
 const tableHeaderRow = document.createElement("tr"); // fej sor létrehozása
-/**
- * @type {number} index változó
- */
-let index = 0; // index változó létrehozása hogy a harmadik elemet meg lehessen határozni
+
 for (const header of tableheaderArray) { // for loop a fej sor tartalmának a létrehozásához
-    index++; // index növelése
-    if(index == 3) // ha a 3. cella (csak így jutott eszembe megoldani)
-        createCell("th", header.title, tableHeaderRow, 2); // 3. cella létrehozása colSpan = 2 -vel
-    else // ha nem a 3. cella
-        createCell("th", header.title, tableHeaderRow); // adott cella létrehozása
+    createCell("th", header.title, header.colspan) // adott header cella létrehozása
 }
 thead.appendChild(tableHeaderRow); // fej sor hozzáfűzése a fejhez
 
