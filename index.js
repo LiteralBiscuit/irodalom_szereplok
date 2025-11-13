@@ -59,7 +59,7 @@ table.appendChild(tbody); // törzs hozzáfűzése a táblázathoz
 const tableHeaderRow = document.createElement("tr"); // fej sor létrehozása
 
 for (const header of tableheaderArray) { // for loop a fej sor tartalmának a létrehozásához
-    createCell("th", header.title, header.colspan) // adott header cella létrehozása
+    createCell("th", header.title, tableHeaderRow, header.colspan) // adott header cella létrehozása
 }
 thead.appendChild(tableHeaderRow); // fej sor hozzáfűzése a fejhez
 
